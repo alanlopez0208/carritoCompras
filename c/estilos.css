@@ -1,0 +1,44 @@
+/*  Si se edita algo del body se edita todo los elementos que estan dentro del body ejemplo.
+    el Header, etc etc.*/
+body{
+    /*El atributio margin : auto centra el contenido en el centro*/
+    margin: auto;
+    border: 5px solid red;
+}
+
+header{
+    width: 100%;
+    border: 1px solid red;
+}
+
+nav{
+    /*Para camibiar un elemento de bloque a luinea se realiza con el comando display: flex*/
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 5px solid #aaa;
+    background-color: blanchedalmond;
+}
+
+
+#menuBurger{
+    width: 30px;
+    height: 30px;
+    border: 5px solid #aaa;
+    background-color: blanchedalmond;
+}
+
+#menuBurger div{
+    margin: auto;
+    width: 80%;
+    height: 4px;
+    background-color: aquamarine;
+    /*Separa los objetos hacia arriba*/
+    margin-top: 5px;
+}
+
+img{
+    width: 50;
+    height: auto;
+    border: 1px solid red;
+}
