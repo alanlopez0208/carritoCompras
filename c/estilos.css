@@ -25,20 +25,22 @@ nav{
     width: 30px;
     height: 30px;
     border: 5px solid #aaa;
+    border-radius: 5px;
     background-color: blanchedalmond;
+    padding: 5px 3px;
+    margin: auto;
 }
 
 #menuBurger div{
-    margin: auto;
     width: 80%;
     height: 4px;
     background-color: aquamarine;
     /*Separa los objetos hacia arriba*/
-    margin-top: 5px;
+    margin-top: 8px;
 }
 
 img{
-    width: 50;
+    width: 50px;
     height: auto;
     border: 1px solid red;
 }
