@@ -14,33 +14,67 @@ header{
 nav{
     /*Para camibiar un elemento de bloque a luinea se realiza con el comando display: flex*/
     display: inline-block;
-    width: 30px;
-    height: 30px;
     border: 5px solid #aaa;
     background-color: blanchedalmond;
 }
 
+main{
+    height: 400px;
+    margin-top: 20px;
+}
+
+footer{
+    border: 5px solid red;
+}
 
 #menuBurger{
+    display: inline-block;
     width: 30px;
     height: 30px;
-    border: 5px solid #aaa;
+    border: 3px solid #aaa;
     border-radius: 5px;
     background-color: blanchedalmond;
     padding: 5px 3px;
     margin: auto;
+    cursor : pointer;
 }
 
 #menuBurger div{
+    margin: auto;
     width: 80%;
     height: 4px;
     background-color: aquamarine;
     /*Separa los objetos hacia arriba*/
-    margin-top: 8px;
+    margin-top: 4px;
+}
+
+/*El hover es cuando el cursos este encima del menuburger*/
+#menuBurger:hover{
+    background-color: brown;
+    box-shadow: #123561 5px 5px 10px;
+}
+
+/*El active sirve cuando le estas dando clic*/
+#menuBurger:active{
+    background-color: blanchedalmond;
 }
 
 img{
     width: 50px;
     height: auto;
     border: 1px solid red;
+}
+/*Para editar hijos de un elemento se debe de poner el nombre del elemento
+y enseguda los elementos*/
+#navPrincipal a{
+    color: goldenrod;
+    padding: 5px;
+    margin: 0 10px;
+    border-right: 1px solid goldenrod;
+    /*Es para quitar el guionsito de abajo*/
+    text-decoration: none;
+}
+
+#nacPrincipal a:hover{
+    
 }
