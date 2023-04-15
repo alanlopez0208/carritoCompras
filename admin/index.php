@@ -37,19 +37,21 @@ echo '
 
 echo '
   <h1>Iniciar Sesion en Administrador de Contenidos</h1>
-  <form action="login.php" method="POST" class="form">
-    <div class=""> 
-      <label for="user">USUARIO</label>
-      <input type="email" name="user">
-    </div>
-    <div class=""> 
-      <label for="pss">Contraseña</label>
-      <input type="password" name="pss">
-    </div>
-    <div class=""> 
-      <input type="reset" name="cancelar" value="cancelar">
+  <form action="login.php" method="POST" class="modal-content">
+    <div class="container">
+      <div class=""> 
+        <label for="user"><b>USUARIO</b></label>
+        <input type="email" name="user">
+      </div>
+      <div class=""> 
+        <label for="pss"><b>Contraseña</b></label>
+        <input type="email" name="pss">
+      </div>
+      <div class=""> 
+        <input type="reset" name="cancelar" value="cancelar">
 
-      <input type="submit" name="cancelar" value="Iniciar Sesion">
+        <input type="submit" name="cancelar" value="Iniciar Sesion">
+      </div>
     </div>
 </form>
 

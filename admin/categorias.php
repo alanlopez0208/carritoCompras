@@ -16,13 +16,13 @@ echo '
     <div id="id01" class="modal">
         <span onclick="document.getElementById(\'id01\').style.display=\'none\'" class="close" title="Close Modal"><i
                 class="fa-solid fa-xmark"></i></span>
-        <form class="modal-content" action="/action_page.php" method="POST">
+        <form class="modal-content" action="altaCat.php" method="POST">
             <div class="container">
                 <h1>Crear Categoria Nueva</h1>
                 <hr>
 
-                <label for="categoria"><b>Categoria</b></label>
-                <input type="text" placeholder="Escirbe el nombre de la categoria" name="categoria" required>
+                <label for="cate"><b>Categoria</b></label>
+                <input type="text" placeholder="Escirbe el nombre de la categoria" name="cate" required>
 
                 <label for="categoriaSup"><b>Categoria Superior</b></label>
                 <select name="categoriaSup" id="" style=" min-width: 100%">
@@ -69,11 +69,12 @@ $stmt->execute();
 while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
     echo '<tr>
         <td scope="row">' . $row->categoria . '</td>';
-    $stmt2 = $conn->prepare("SELECT  categoria,categoriaPadre FROM categorias WHERE id = $row->id");
+
+    $stmt2 = $conn->prepare("SELECT  categoria,categoriaPadre FROM categorias WHERE id = $row->categoriaPadre");
     $stmt2->execute();
     $row2 = $stmt2->fetch(PDO::FETCH_OBJ);
-    if ($row2 && ($row2->categoriaPadre != "Sin Categoria Padre")) {
-        echo '<td>' . $row2->categoriaPadre . '</td>';
+    if ($row2 && ($row2->categoriaPadre != 0)) {
+        echo '<td>' . $row2->categoria . '</td>';
     } else {
         echo '<td>Sin Categoria Padre</td>';
     }

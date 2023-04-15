@@ -7,7 +7,7 @@ include("encabezado.php");
 <button onclick="document.getElementById('id01').style.display='block'">Sign Up</button>
 
 <!-- Inicio Alta Productos-->
-<form action="altaCat.php" style="border:1px solid #ccc">
+<form action="altaProductos.php" style="border:1px solid #ccc">
     <div class="container">
         <h1>Añadir Productos Nuevos</h1>
         <hr>
