@@ -77,7 +77,7 @@ try {
     // Manejo de errores
     echo "Error de conexión: " . $e->getMessage();
 }
-
+$conn = null;
 ?>
 <?php
 echo '</section>
