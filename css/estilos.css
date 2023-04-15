@@ -16,7 +16,7 @@ header {
 .btos {
   font-size: 30px;
   padding: 20px 5px;
-  color: #d2330b;
+  color: green;
   margin: 0 5px;
 }
 
@@ -48,7 +48,6 @@ nav {
 }
 
 main {
-  max-width: 1200px;
   margin: auto;
   /*margin-top: 20px;*/
 }
@@ -87,7 +86,7 @@ main {
 
 /*El hover es cuando el cursos este encima del menuburger*/
 #menuBurger:hover {
-  background-color: brown;
+  background-color: green;
   box-shadow: #123561 5px 5px 10px;
 }
 
@@ -103,7 +102,7 @@ main {
 
 #tenis {
   height: auto;
-  border: 1px solid red;
+  border: 1px solid green;
 }
 
 .producto {
@@ -151,13 +150,37 @@ main {
 
 /* Add an active class to highlight the current page */
 .topnav a.active {
-  background-color: #d2330b;
+  background-color: green;
   color: white;
 }
 
 /* Hide the link that should open and close the topnav on small screens */
 .topnav .icon {
   display: none;
+}
+
+.carousel-caption {
+  color: black;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+#cardsPropios {
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cardPropio {
+  margin: 20px;
+}
+
+.cardPropio a {
+  margin: 10px 0;
 }
 
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
@@ -192,20 +215,6 @@ main {
     display: block;
     text-align: left;
   }
-}
-
-.carousel-caption {
-  color: black;
-}
-
-#cardsPropios {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.cardPropio {
-  width: 200px;
-  margin: 20px;
 }
 
 @media screen and (max-width: 768px) {

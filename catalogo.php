@@ -1,3 +1,6 @@
+<?php
+include("conexion.php");
+echo '
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +14,11 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <meta keywords="compras">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://kit.fontawesome.com/469d4cc9f4.css" crossorigin="anonymous">
+    <script
+    src="https://kit.fontawesome.com/b72784143d.js"
+    crossorigin="anonymous"
+    ></script>
+  
     <link rel="stylesheet" type="text/css" href="css/estilos.css" />
 </head>
 
@@ -19,13 +26,13 @@
     <header class="d-flex justify-content-between">
         <div class="d-flex">
             <!--el atributo alt es para describe la imagen-->
-            <img id="logotipo" src="img/logotipo.jpeg" alt="logotipo de empresa">
+            <img id="logotipo" src="img/logo.jpeg" alt="logotipo de empresa" />
             <!--La navegacion donde se pone el menu hamburgesa-->
             <!--Nav es un elemento de bloque lo que significa que ocupa un espacio-->
             <!--Para que sea un elemento en linea se realiza en csss-->
             <div class="topnav" id="myTopnav">
-                <a href="#" class="active">Home</a>
-                <a href="Catalogo.php">Catalogo</a>
+                <a href="index.html" >Home</a>
+                <a href="#" class="active">Catalogo</a>
                 <a href="Contacto.php">Contacto</a>
                 <a href="Surcusales.php">Surcusales</a>
                 <!--Esta es el boton hamburgesa-->
@@ -47,41 +54,43 @@
     <main>
         <h3 class="m-4">Catalogo</h3>
 
-        <section class="d-flex justify-content-between" id="cardsPropios">
-            <?php
-            for ($i = 0; $i < 10; $i++) {
-                echo '<div class="card cardPropio">
-               <img src="..." class="card-img-top" alt="...">
-               <div class="card-body">
-                   <h5 class="card-title">Card title</h5>
-                   <p class="card-text">Some quick example text to build on the card title.</p>
-                   <a href="#" class="btn btn-primary">Go somewhere</a>
-               </div>
-           </div>
-           </div>';
-            }
-            ?>
+        <section class="d-flex justify-center" id="cardsPropios">';
+?>
+<?php
+try {
+    $stmt = $conn->prepare("SELECT * FROM categorias");
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute();
 
-        </section>
-        <a class="" href="catalogo.php" target="_self">Ver mas...</a>
-
-        <footer>Este es el footer
-        </footer>
-    </main>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
-</script>
-<script>
-function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
+    while ($row = $stmt->fetch()) {
+        echo '<div class="card cardPropio">
+                            <img src="' . $row->img . '" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">' . strtoupper($row->categoria) . '</h5>
+                                <p class="card-text">' . $row->descripcion . '</p>
+                                <a href="productos.php" class="btn btn-primary">Ver Catalogo</a>
+                                <a href="#">Mas Info</a>
+                            </div>
+                        </div>';
     }
+} catch (PDOException $e) {
+    // Manejo de errores
+    echo "Error de conexión: " . $e->getMessage();
 }
-</script>
-<script src="https://kit.fontawesome.com/469d4cc9f4.js" crossorigin="anonymous"></script>
 
-</html>
+?>
+<?php
+echo '</section>
+    <a class="" href="catalogo.php" target="_self">Ver mas...</a>
+
+    <footer>Este es el footer
+    </footer>
+    </main>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
+    <script src="https://kit.fontawesome.com/469d4cc9f4.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    </html>';
+?>
