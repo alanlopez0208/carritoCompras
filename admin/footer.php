@@ -70,16 +70,6 @@ echo ' <footer class="bg-light text-center text-lg-start">
 </footer>
 </main>
 </body>
-<script>
-// Get the modal
-var modal = document.getElementById("id01");
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
+<script src ="script/script.js"></script>
 </html>';
 ?>

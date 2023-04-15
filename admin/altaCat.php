@@ -3,7 +3,7 @@ include("../conexion.php");
 
 $categoria = $_POST["cate"];
 $catPadre = $_POST["categoriaSup"];
-$img = "img/catalogo/categorias/" . $_POST["imagen"];
+$img = "img/categorias/" . $_POST["imagen"];
 $desc = $_POST["descripcion"];
 
 $stm = $conn->prepare("INSERT INTO `categorias`
@@ -17,5 +17,5 @@ $stm->bindParam(4, $desc);
 if ($stm->execute()) {
     header("Location:categorias.php");
 }
-
+$conn = null;
 ?>

@@ -8,9 +8,12 @@ $stmt->execute();
 
 echo '
 <main>
+    <div class ="contenedor">
     <h1>ADMINISRADOR DE CATEGORIAS DE PRODUCTOS</h1>
     <!-- Button to open the modal -->
-    <button onclick="document.getElementById(\'id01\').style.display=\'block\'">Sign Up</button>
+    <button onclick="document.getElementById(\'id01\').style.display=\'block\'">Registrar Producto</button>
+    </div>
+
     <hr>
     <!-- The Modal (contains the Sign Up form) -->
     <div id="id01" class="modal">
@@ -42,7 +45,9 @@ echo '
 
 
                 <div class="clearfix">
-                    <button type="button" class="cancelbtn">Cancel</button>
+                    <button type="button" class="cancelbtn"
+                    onclick="document.getElementById(\'id01\').style.display=\'none\'"
+                    >Cancel</button>
                     <button type="submit" class="signupbtn">Registrar Producto</button>
                 </div>
             </div>
@@ -81,8 +86,11 @@ while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
     echo '
         <td scope="row">' . $row->descripcion . '</td>
         <td><img src="../' . $row->img . '" alt="" srcset="" style="width: 50px" ></td>
+        
         <td><i class="fa-solid fa-pen-to-square"  style="font-size: 40px"></i></td>
-        <td><i class="fa-solid fa-delete-left" style="font-size: 40px"></i></td>
+        <td><i class="fa-solid fa-delete-left" style="font-size: 40px"
+        onclick="document.getElementById(\'id02\').style.display=\'block\';
+        idCategoria(this,\'' . strval($row->categoria) . '\',\'' . $row->id . '\')" ></i></td>
     </tr>';
 }
 $conn = null;
@@ -96,3 +104,25 @@ echo '</tbody>
 <?php
 include("footer.php");
 ?>
+
+<button onclick="document.getElementById('id02').style.display='block'">Registrar Producto</button>
+<!-- Form Eliminar Categoria -->
+<div id="id02" class="modal">
+    <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal"><i
+            class="fa-solid fa-xmark"></i></span>
+    <form class="modal-content" action="eliminarCat.php" method="POST">
+        <input type="hidden" name="idDel" id="idCatDel">
+        <div class="container">
+            <h1>Eliminando la Categoria "<span class="delCat"></span>"</h1>
+            <hr>
+            <p style="font-weight: bold;">¿Estas seguro que deseas eliminar la categoria </b><span
+                    class="delCat"></span>?
+            </p>
+            <div class="clearfix">
+                <button type="button" class="cancelbtn"
+                    onclick="document.getElementById('id02').style.display='none'">Cancel</button>
+                <button type="submit" class="signupbtn">Eliminar Producto</button>
+            </div>
+        </div>
+</div>
+<!-- Fin de eliminar Categoria -->
