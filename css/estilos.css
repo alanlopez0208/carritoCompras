@@ -62,19 +62,19 @@ main {
   border: 5px solid #aaa;
   background-color: blanchedalmond;
 }
-/*
-    #menuBurger {
-        display: inline-block;
-        width: 30px;
-        height: 30px;
-        border: 3px solid #aaa;
-        border-radius: 5px;
-        background-color: blanchedalmond;
-        padding: 5px 3px;
-        margin: auto;
-        cursor: pointer;
-    }
-    */
+
+/* #menuBurger {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 3px solid #aaa;
+  border-radius: 5px;
+  background-color: blanchedalmond;
+  padding: 5px 3px;
+  margin: auto;
+  cursor: pointer;
+} */
+
 #menuBurger div {
   margin: auto;
   width: 80%;

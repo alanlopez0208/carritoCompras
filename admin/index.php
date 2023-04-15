@@ -1,5 +1,6 @@
 <?php
-echo '<!DOCTYPE html>
+echo '
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -29,32 +30,30 @@ echo '<!DOCTYPE html>
 
   <body>
     <header class="d-flex justify-content-between">
-      <div class="d-flex">
         <!--el atributo alt es para describe la imagen-->
         <img id="logotipo" src="../img/logo.jpeg" alt="logotipo de empresa" />
-        <!--La navegacion donde se pone el menu hamburgesa-->
-        <!--Nav es un elemento de bloque lo que significa que ocupa un espacio-->
-        <!--Para que sea un elemento en linea se realiza en csss-->
-        <div class="topnav" id="myTopnav">
-          <a href="index.php" class="active">Home</a>
-          <a href="user.php">Usuarios</a>
-          <a href="categorias.php">Categorias</a>
-          <a href="productos.php">productos</a>
-          <a href="ventas.php">Ventas</a>
-          <!--Esta es el boton hamburgesa-->
-          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-          </a>
-        </div>
-      </div>
-
-      <div id="botones"  >
-      <form action=""  style = "display: flex">
-        <input type="text" name="busquedad" id="busquedad" />
-        <i class="fa-solid fa-magnifying-glass btos"></i>
-      </form>
-      <i class="fa-regular fa-user btos"></i>
-    </div>
     </header>
     <main>';
+
+echo '
+  <h1>Iniciar Sesion en Administrador de Contenidos</h1>
+  <form action="login.php" method="POST" class="form">
+    <div class=""> 
+      <label for="user">USUARIO</label>
+      <input type="email" name="user">
+    </div>
+    <div class=""> 
+      <label for="pss">Contraseña</label>
+      <input type="password" name="pss">
+    </div>
+    <div class=""> 
+      <input type="reset" name="cancelar" value="cancelar">
+
+      <input type="submit" name="cancelar" value="Iniciar Sesion">
+    </div>
+</form>
+
+<a href="categorias.php" target="_self">Entrar</a>';
+
+include("footer.php");
 ?>
