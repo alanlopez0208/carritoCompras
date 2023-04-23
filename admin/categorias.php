@@ -29,7 +29,7 @@ echo '
 
                 <label for="categoriaSup"><b>Categoria Superior</b></label>
                 <select name="categoriaSup" id="" style=" min-width: 100%">
-                    <option value "0">Ninguna</option>
+                    <option value ="0">Ninguna</option>
                 ';
 while ($row = $stmt->fetch()) {
     echo '<option value="' . $row->id . '">' . $row->categoria . '</option>';
@@ -87,10 +87,15 @@ while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
         <td scope="row">' . $row->descripcion . '</td>
         <td><img src="../' . $row->img . '" alt="" srcset="" style="width: 50px" ></td>
         
-        <td><i class="fa-solid fa-pen-to-square"  style="font-size: 40px"></i></td>
-        <td><i class="fa-solid fa-delete-left" style="font-size: 40px"
-        onclick="document.getElementById(\'id02\').style.display=\'block\';
-        idCategoria(this,\'' . strval($row->categoria) . '\',\'' . $row->id . '\')" ></i></td>
+        <td><i 
+            class="fa-solid fa-pen-to-square"  style="font-size: 40px"
+            onclick = "editar(this)">
+        </i></td>
+        <td><i 
+            class="fa-solid fa-delete-left" style="font-size: 40px"
+            onclick="document.getElementById(\'id02\').style.display=\'block\';
+            idCategoria(this,\'' . strval($row->categoria) . '\',\'' . $row->id . '\')" >
+        </i></td>
     </tr>';
 }
 $conn = null;
@@ -105,7 +110,7 @@ echo '</tbody>
 include("footer.php");
 ?>
 
-<button onclick="document.getElementById('id02').style.display='block'">Registrar Producto</button>
+
 <!-- Form Eliminar Categoria -->
 <div id="id02" class="modal">
     <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal"><i
@@ -121,8 +126,49 @@ include("footer.php");
             <div class="clearfix">
                 <button type="button" class="cancelbtn"
                     onclick="document.getElementById('id02').style.display='none'">Cancel</button>
-                <button type="submit" class="signupbtn">Eliminar Producto</button>
+                <button type="submit" class="signupbtn">Eliminar Categoria</button>
             </div>
         </div>
+    </form>
 </div>
 <!-- Fin de eliminar Categoria -->
+
+
+
+<!-- Form Editar Categoria -->
+<div id="id03" class="modal">
+    <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal"><i
+            class="fa-solid fa-xmark"></i></span>
+    <form class="modal-content" action="altaCat.php" method="POST">
+        <div class="container">
+            <h1>Crear Categoria Nueva</h1>
+            <hr>
+
+            <label for="cate"><b>Categoria</b></label>
+            <input type="text" placeholder="Escirbe el nombre de la categoria" name="cate" required>
+
+            <label for="categoriaSup"><b>Categoria Superior</b></label>
+            <select name="categoriaSup" id="" style=" min-width: 100%">
+                <option value="0">Ninguna</option>
+                <?php
+                while ($row = $stmt->fetch()) {
+                    echo '<option value="' . $row->id . '">' . $row->categoria . '</option>';
+                }
+                ?>
+            </select>
+            <label for="descripcion"><b>Descripcion</b></label>
+            <textarea name="descripcion" id="descripcion" placeholder="Escriba la descripcion"
+                style=" min-width: 100%;   resize: none;"></textarea>
+
+            <label for="imgen"><b>Imagen</b></label>
+            <input type="file" name="imagen" required style="min-width: 100%;">
+
+
+            <div class="clearfix">
+                <button type="button" class="cancelbtn"
+                    onclick="document.getElementById('id03').style.display='none'">Cancel</button>
+                <button type="submit" class="signupbtn">Registrar Producto</button>
+            </div>
+        </div>
+    </form>
+</div>

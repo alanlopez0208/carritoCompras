@@ -18,3 +18,8 @@ function idCategoria(clase, categoria, id) {
     elemento[index].innerText = categoria;
   }
 }
+
+//Funcion para que se le de click al formulario eliminar
+function editar(elemnt, categoria, categoriaSup, descripcion, imagen) {
+  alert();
+}
