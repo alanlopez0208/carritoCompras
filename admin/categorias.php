@@ -42,7 +42,7 @@ echo '
 
 
                 <label class="form-label" for="img"><b>Imagen</b></label>
-                <input class="form-control" type="file" name="img">
+                <input class="form-control" type="file" name="img" required>
 
                 <div class="clearfix">
                     <button type="button" class="cancelbtn"
@@ -133,7 +133,7 @@ echo '</tbody>
 <div id="id03" class="modal">
     <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal" entype="multipart/form-data"><i
             class="fa-solid fa-xmark"></i></span>
-    <form class="modal-content" action="editCat.php" method="POST">
+    <form class="modal-content" action="editCat.php" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="idEdit" id="idEdit">
         <div class="container">
             <h1>Modoficar Categoria <span  id="editCat"></span></h1>
@@ -157,7 +157,7 @@ echo '</tbody>
                 </select>
             </div>
             <div class="mb-3">
-            <label for="imgEdit"><b>Imagen</b></label>
+                <label for="imgEdit"><b>Imagen</b></label>
                 <input type="file" name="imgEdit" id ="imgCatEditSRC" required style="min-width: 100%;">
             </div>
             <div class="mb-3">

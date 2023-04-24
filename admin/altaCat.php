@@ -12,7 +12,6 @@ $stm = $conn->prepare("INSERT INTO `categorias`
 VALUES (?,?,?,?)");
 $stm->bindParam(1, $categoria);
 $stm->bindParam(2, $img);
-echo'catPadre';
 $stm->bindParam(3, $catPadre);
 $stm->bindParam(4, $desc);
 
