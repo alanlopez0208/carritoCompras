@@ -19,7 +19,7 @@ echo '
     <div id="id01" class="modal">
         <span onclick="document.getElementById(\'id01\').style.display=\'none\'" class="close" title="Close Modal"><i
                 class="fa-solid fa-xmark"></i></span>
-        <form class="modal-content" action="altaCat.php" method="POST">
+        <form class="modal-content" action="altaCat.php" method="POST" enctype="multipart/form-data">
             <div class="container">
                 <h1>Crear Categoria Nueva</h1>
                 <hr>
@@ -28,21 +28,21 @@ echo '
                 <input type="text" placeholder="Escirbe el nombre de la categoria" name="cate" required>
 
                 <label for="categoriaSup"><b>Categoria Superior</b></label>
-                <select name="categoriaSup" id="" style=" min-width: 100%">
-                    <option value ="0">Ninguna</option>
+                <select name="categoriaSup" style=" min-width: 100%">
+                    <option value ="0" >Ninguna</option>
                 ';
-while ($row = $stmt->fetch()) {
-    echo '<option value="' . $row->id . '">' . $row->categoria . '</option>';
-}
-echo '
+                while ($row = $stmt->fetch()) {
+                    echo '<option value="' . $row->id . '">' . $row->categoria . '</option>';
+                }
+                echo '
                 </select>
                 <label for="descripcion"><b>Descripcion</b></label>
                 <textarea name="descripcion" id="descripcion" placeholder="Escriba la descripcion"
                     style=" min-width: 100%;   resize: none;"></textarea>
 
-                <label for="imgen"><b>Imagen</b></label>
-                <input type="file" name="imagen" required style="min-width: 100%;">
 
+                <label class="form-label" for="img"><b>Imagen</b></label>
+                <input class="form-control" type="file" name="img">
 
                 <div class="clearfix">
                     <button type="button" class="cancelbtn"
@@ -77,8 +77,8 @@ while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
 
     $stmt2 = $conn->prepare("SELECT  categoria, categoriaPadre FROM categorias WHERE id = $row->categoriaPadre");
     $stmt2->execute();
-    $row2 = $stmt2->fetch(PDO::FETCH_OBJ);
-    if ($row2 && ($row2->categoriaPadre != 0)) {
+  
+    if (($row2 = $stmt2->fetch(PDO::FETCH_OBJ)) ) {
         echo '<td>' . $row2->categoria . '</td>';
     } else {
         echo '<td>Sin Categoria Padre</td>';
@@ -131,7 +131,7 @@ echo '</tbody>
 
 <!-- Form Editar Categoria -->
 <div id="id03" class="modal">
-    <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal"><i
+    <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal" entype="multipart/form-data"><i
             class="fa-solid fa-xmark"></i></span>
     <form class="modal-content" action="editCat.php" method="POST">
         <input type="hidden" name="idEdit" id="idEdit">
@@ -146,7 +146,7 @@ echo '</tbody>
                 <label for="catPadreEdit" class="form-label"><b>Categoria Superior</b></label>
               
                 <select name="catPadreEdit" id="catPadreEdit" required>
-                    <option value="0" selected>Ninguna</option>
+                    <option value="0">Ninguna</option>
                     <?php
                     $stmt = $conn->prepare("SELECT  categoria, categoriaPadre FROM categorias");
                     $stmt->execute();

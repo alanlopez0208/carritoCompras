@@ -37,6 +37,7 @@ function editarCategoria(clase, categoria, categoriaPadre,img,descripcion,id) {
     // Disparar el evento 'change' en el elemento 'select' para que se actualice la opción seleccionada
     var event = new Event('change');
     document.getElementById("catPadreEdit").dispatchEvent(event);
+
     document.getElementById("imgCatEditSRC").src = img;
 
     document.getElementById("descEdit").value = descripcion;
