@@ -55,6 +55,5 @@ echo '<!DOCTYPE html>
       </form>
       <i class="fa-regular fa-user btos"></i>
     </div>
-    </header>
-    <main>';
+    </header>';
 ?>
