@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-04-2023 a las 04:59:43
+-- Tiempo de generación: 23-04-2023 a las 22:03:28
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -30,7 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `categorias` (
   `id` int(4) NOT NULL,
   `categoria` varchar(200) NOT NULL,
-  `categoriaPadre` varchar(200) NOT NULL DEFAULT 'Sin Categoria Padre',
+  `img` varchar(300) NOT NULL DEFAULT 'img/categorias/default.png',
+  `categoriaPadre` int(2) NOT NULL DEFAULT 0,
   `descripcion` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -38,9 +39,33 @@ CREATE TABLE `categorias` (
 -- Volcado de datos para la tabla `categorias`
 --
 
-INSERT INTO `categorias` (`id`, `categoria`, `categoriaPadre`, `descripcion`) VALUES
-(1, 'Muebles de casa', 'Sin Categoria Padre', 'Muebles perros para batos perrones'),
-(2, 'Muebles para oficina', 'Sin Categoria Padre', 'Muebles tipo cute');
+INSERT INTO `categorias` (`id`, `categoria`, `img`, `categoriaPadre`, `descripcion`) VALUES
+(1, 'Muebles de casa', 'img/categorias/default.png', 0, 'Muebles perros para batos perrones'),
+(2, 'Muebles para oficina', 'img/categorias/default.png', 0, 'Muebles tipo cute');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productos`
+--
+
+CREATE TABLE `productos` (
+  `id` int(4) UNSIGNED NOT NULL,
+  `producto` varchar(200) NOT NULL,
+  `img` varchar(300) NOT NULL DEFAULT 'img/productos/default.png',
+  `catId` int(200) DEFAULT NULL,
+  `precio` float(6,2) DEFAULT NULL,
+  `descripcion` varchar(250) DEFAULT NULL,
+  `fechaReg` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id`, `producto`, `img`, `catId`, `precio`, `descripcion`, `fechaReg`) VALUES
+(1, 'COCA', 'img/productos/default.png', 555, 34.00, 'COCAS TIPO CUTE', '2023-04-19'),
+(2, 'SABRITAS', 'img/productos/default.png', 44, 556.00, 'SABITRAS AESTHETIC PARA MORROS AESTHETICS', '2023-04-27');
 
 -- --------------------------------------------------------
 
@@ -67,6 +92,12 @@ ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -80,7 +111,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `productos`
+--
+ALTER TABLE `productos`
+  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
