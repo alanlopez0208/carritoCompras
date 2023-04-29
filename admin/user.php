@@ -10,7 +10,7 @@ include("encabezado.php");
             <th scope="col">USUARIO/EMAIL</th>
             <th scope="col">CONTRASEÑA</th>
             <th scope="col">IMAGEN</th>
-            <th scope="col">NIVEL</th>
+       
             <th scope="col">FECHA REGISTRO</th>
             <th scope="col">MODIFICAR</th>
             <th scope="col">ELIMINAR</th>
@@ -27,7 +27,6 @@ include("encabezado.php");
             echo '<tr>
         <td scope="row">' . $row->usuario . '</td>
         <td>' . $row->pasword . '</td>
-        <td>' . $row->tipo . '</td>
         <td><img src="../' . $row->avatar . '" alt="" srcset="" style="width: 50px" ></td>
         <td>' . $row->fecha . '</td>
         <td><i class="fa-solid fa-pen-to-square"  style="font-size: 40px"></i></td>

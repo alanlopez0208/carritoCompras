@@ -36,7 +36,7 @@ echo '<!DOCTYPE html>
         <!--Nav es un elemento de bloque lo que significa que ocupa un espacio-->
         <!--Para que sea un elemento en linea se realiza en csss-->
         <div class="topnav" id="myTopnav">
-          <a href="index.php" class="active">Home</a>
+          <a href="dock.php" class="active">Home</a>
           <a href="user.php">Usuarios</a>
           <a href="categorias.php">Categorias</a>
           <a href="productos.php">productos</a>

@@ -1,4 +1,5 @@
 <?php
+$error = $_GET['error'] ? $_GET['error'] : "";
 echo '
 <!DOCTYPE html>
 <html lang="en">
@@ -36,16 +37,20 @@ echo '
     <main>';
 
 echo '
-  <h1>Iniciar Sesion en Administrador de Contenidos</h1>
+<div class="d-flex justify-content-center" class="d-flex flex-wrap">
+  <h1 style="width:100%">Iniciar Sesion en Administrador de Contenidos</h1>
+  <p id= "error" style="font-size:50px; color:red; font-weight:500;">'.$error.'</p>
+</div>
+
   <form action="login.php" method="POST" class="modal-content">
     <div class="container">
       <div class=""> 
         <label for="user"><b>USUARIO</b></label>
-        <input type="email" name="user">
+        <input type="text" name="user">
       </div>
       <div class=""> 
         <label for="pss"><b>Contraseña</b></label>
-        <input type="email" name="pss">
+        <input type="password" name="pss">
       </div>
       <div class=""> 
         <input type="reset" name="cancelar" value="cancelar">
