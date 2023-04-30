@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include('../conexion.php');
     $user = $_POST['user'];
     $pass = $_POST['pss'];
@@ -12,15 +13,19 @@
 
     // Verificar que el usuario y la contraseña son correctos
     if($row = $stm->fetch(PDO::FETCH_OBJ)){
-        $_SESSION['sessionOn'] = 'si';
+        $_SESSION['sessionOn'] = true;
         $_SESSION['user'] = $user;
-        $_SESSION['pss'] = $pss;
+        $_SESSION['pss'] = $pass;
         header('Location:dock.php');
+        exit();
     }else{
+        $_SESSION['sessionOn'] = false;
+        session_destroy();
         header('Location:index.php?error=Datos incorrectos');   
+        exit();
     }
-    exit();
     }catch(PDOException $e){
         echo $e->getMessage();
     }
+    $conn = null;
 ?>

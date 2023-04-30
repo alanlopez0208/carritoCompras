@@ -1,6 +1,5 @@
 <?php
 include("encabezado.php");
-
 echo'
     <main>
         <div class="d-flex justify-content-center" style="height: 400px; font-size: 100px;">

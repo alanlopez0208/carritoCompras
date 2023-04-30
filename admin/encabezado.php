@@ -1,4 +1,5 @@
 <?php
+include ("seguridad.php");
 echo '<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -53,7 +54,10 @@ echo '<!DOCTYPE html>
         <input type="text" name="busquedad" id="busquedad" />
         <i class="fa-solid fa-magnifying-glass btos"></i>
       </form>
-      <i class="fa-regular fa-user btos"></i>
+      <div class="d-block">
+        <i class="fa-regular fa-user btos"></i>
+        <a href="salir.php">Salir</a>
+      </div>
     </div>
     </header>';
 ?>

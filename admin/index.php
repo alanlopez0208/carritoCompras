@@ -1,7 +1,7 @@
 <?php
-$error = $_GET['error'] ? $_GET['error'] : "";
-echo '
-<!DOCTYPE html>
+$error = isset($_GET['error']) ? $_GET['error'] : "";
+
+echo '<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -58,9 +58,7 @@ echo '
         <input type="submit" name="cancelar" value="Iniciar Sesion">
       </div>
     </div>
-</form>
-
-<a href="categorias.php" target="_self">Entrar</a>';
+</form>';
 
 include("footer.php");
 ?>
