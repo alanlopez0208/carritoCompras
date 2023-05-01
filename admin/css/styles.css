@@ -83,6 +83,15 @@ button:hover {
   padding-top: 50px;
 }
 
+
+.modal-contenedor{
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;

@@ -28,15 +28,16 @@ function idCategoria(clase, categoria, id) {
 
 //Funcion para cuando se le de clic al formulario eliminar
 function editarCategoria(clase, categoria, categoriaPadre,img,descripcion,id) {
-
     document.getElementById("editCat").innerHTML = categoria;
+    
     // Establecer el valor de la categoría y la categoría padre en el formulario de edición
     document.getElementById("catEdit").value = categoria;
     document.getElementById("catPadreEdit").value = categoriaPadre;
 
-    // Disparar el evento 'change' en el elemento 'select' para que se actualice la opción seleccionada
-    var event = new Event('change');
-    document.getElementById("catPadreEdit").dispatchEvent(event);
+    var selectElement = document.getElementById("catPadreEdit");
+
+    var optionElement = selectElement.querySelector("option[value='" + categoriaPadre + "']");
+    optionElement.selected = true;
 
     document.getElementById("imgCatEditSRC").src = img;
 

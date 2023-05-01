@@ -70,6 +70,6 @@ echo ' <footer class="bg-light text-center text-lg-start">
 </footer>
 </main>
 </body>
-<script src ="script/script.js"></script>
+<script src ="js/scripts.js"></script>
 </html>';
 ?>

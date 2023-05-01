@@ -87,14 +87,8 @@ while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
         <td scope="row">' . $row->descripcion . '</td>
         <td><img src="../' . $row->img . '" alt="" srcset="" style="width: 50px" ></td>
         
-        <td><i class="fa-solid fa-pen-to-square"  style="font-size: 40px"
-        onclick="document.getElementById(\'id03\').style.display=\'block\';
-        editarCategoria(this,
-            \''.$row->categoria.'\',
-            \''.$row->categoriaPadre.'\',
-            \''.$row->img.'\',
-            \''.$row->descripcion.'\',
-            \''.$row->id.'\',)"></i></td>
+        <td><a href="editCatForm.php?id='.$row->id.'"><i class="fa-solid fa-pen-to-square"  style="font-size: 40px"
+        onclick=""></i></a></td>
         <td><i class="fa-solid fa-delete-left" style="font-size: 40px"
         onclick="document.getElementById(\'id02\').style.display=\'block\';
         idCategoria(this,\'' . strval($row->categoria) . '\',\'' . $row->id . '\')" ></i></td>
@@ -130,7 +124,7 @@ echo '</tbody>
 </div>
 
 <!-- Form Editar Categoria -->
-<div id="id03" class="modal">
+<!-- <div id="id03" class="modal">
     <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal" entype="multipart/form-data"><i
             class="fa-solid fa-xmark"></i></span>
     <form class="modal-content" action="editCat.php" method="POST" enctype="multipart/form-data">
@@ -146,13 +140,13 @@ echo '</tbody>
                 <label for="catPadreEdit" class="form-label"><b>Categoria Superior</b></label>
               
                 <select name="catPadreEdit" id="catPadreEdit" required>
-                    <option value="0">Ninguna</option>
+                    <option value= 0 >Ninguna</option>
                     <?php
-                    $stmt = $conn->prepare("SELECT  categoria, categoriaPadre FROM categorias");
-                    $stmt->execute();
-                    while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
-                        echo '<option value="' . $row->id . '">' . $row->categoria . '</option>';
-                    }
+                    // $stmt = $conn->prepare("SELECT  * FROM categorias");
+                    // $stmt->execute();
+                    // while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+                    //     echo '<option value= ' . $row->id . ' >' . $row->categoria . '</option>';
+                    // }
                     ?>
                 </select>
             </div>
@@ -167,12 +161,12 @@ echo '</tbody>
             </div>
             <div class="clearfix">
                 <button type="button" class="cancelbtn"
-                    onclick="document.getElementById('id02').style.display='none'">Cancel</button>
+                    onclick="document.getElementById('id03').style.display='none'">Cancelar</button>
                 <button type="submit" class="signupbtn">Actualizar Producto Producto</button>
             </div>
         </div>
     </form>
-</div>
+</div> -->
 
 <?php
 $conn = null;
