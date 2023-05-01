@@ -27,8 +27,21 @@ try{
                 </div>
 
                 <div class="mb-3">
-                <label for="cantidad"><b>Cantidad</b></label>
-                <input type="number" placeholder="Ingresa la cantidad" name="cantidad" required min="0" pattern="[0-9]*"  value="'.$row->catId.'">
+                <select name="prodCatEdit" id="prodCatEdit" required>
+                <option value="0">Ninguna</option>';
+                $stmt2 = $conn->prepare("SELECT * FROM categorias");
+                $stmt2->execute();
+                while ($row2 = $stmt2->fetch(PDO::FETCH_OBJ)) {
+                    echo '<option value="' . $row2->id . '"';
+                    $stmt3 = $conn->prepare("SELECT categorias.categoria,categorias.id FROM productos JOIN categorias ON categorias.id = $row->cateId");
+                    $stmt3->execute();
+                    if(($row3= $stmt3->fetch(PDO::FETCH_OBJ)) && ($row2->id == $row3->id)){
+                        echo   'selected';
+                    }
+                    echo'>' . $row2->categoria . '</option>';
+                }
+                echo'
+                </select>
                 </div>
 
                 <div class="mb-3">

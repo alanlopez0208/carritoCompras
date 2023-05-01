@@ -28,9 +28,18 @@ echo '
                 <label for="producto"><b>Producto</b></label>
                 <input type="text" placeholder="Escirbe el nombre del Producto" name="producto" required>
 
-                <label for="cantidad"><b>Cantidad</b></label>
-                <input type="number" placeholder="Ingresa la cantidad" name="cantidad" required min="0" pattern="[0-9]*">
-
+                <select name="catPtoductos" style=" min-width: 100%">
+                <option value ="0" >Ninguna</option>
+                ';
+                
+                $stmt2 = $conn->prepare("SELECT * FROM categorias");
+                $stmt2->setFetchMode(PDO::FETCH_OBJ);
+                $stmt2->execute();
+                while ($row = $stmt2->fetch()) {
+                    echo '<option value="' . $row->id . '">' . $row->categoria . '</option>';
+                }
+                echo '
+                </select>
                 <label for="precio"><b>Preico</b></label>
                 <input type="number" placeholder="Ingresa el Precio" name="precio" required min="0" pattern="[0-9]*">
 
@@ -58,7 +67,7 @@ echo '
         <thead class="thead-dark">
             <tr class="bg-primary">
                 <th scope="col">PRODUCTO</th>
-                <th scope="col">CANTIDAD</th>
+                <th scope="col">CATEGORIA</th>
                 <th scope="col">PRECIO</th>
                 <th scope="col">DESCRIPCION</th>
                 <th scope="col">FECHA REGISTRO</th>
@@ -71,8 +80,14 @@ echo '
 
 while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
     echo '<tr>
-        <td scope="row">' . $row->producto . '</td>
-        <td scope="row">' . $row->catId . '</td>
+        <td scope="row">' . $row->producto . '</td>';
+
+        $stmt3 = $conn->prepare("SELECT categorias.categoria FROM productos JOIN categorias ON categorias.id = $row->cateId");
+        $stmt3->execute();
+        if(($row3 = $stmt3->fetch(PDO::FETCH_OBJ))){
+            echo   '<td scope="row">' . $row3->categoria .'</td>';
+        }
+        echo'
         <td scope="row">' . $row->precio . '</td>
         <td scope="row">' . $row->descripcion . '</td>
         <td scope="row">' . $row->fechaReg . '</td>
