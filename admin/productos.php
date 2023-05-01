@@ -41,7 +41,7 @@ echo '
                 echo '
                 </select>
                 <label for="precio"><b>Preico</b></label>
-                <input type="number" placeholder="Ingresa el Precio" name="precio" required min="0" pattern="[0-9]*">
+                <input type="number" step="0.01" placeholder="Ingresa el Precio" name="precio" required min="0" pattern="[0-9]*">
 
                 <label for="descripcion"><b>Descripcion</b></label>
                 <textarea name="descripcion" id="descripcion" placeholder="Escriba la descripcion"

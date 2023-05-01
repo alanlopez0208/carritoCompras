@@ -46,7 +46,7 @@ try{
 
                 <div class="mb-3">
                     <label for="precio"><b>Preico</b></label>
-                    <input type="number" placeholder="Ingresa el Precio" name="precio" required min="0" pattern="[0-9]*" value="'.$row->precio.'">
+                    <input type="number" step="0.01" placeholder="Ingresa el Precio" name="precio" required min="0" pattern="[0-9]*" value="'.$row->precio.'">
                 </div>
 
                 <div class="mb-3">
