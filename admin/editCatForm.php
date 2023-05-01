@@ -2,7 +2,8 @@
 include("../conexion.php");
 include("encabezado.php");
 
-$idCat = $_GET['id'];
+$idCat = $_GET['id']; //Aqui es donde recibimos el parametro que enviamos por URL(GET)
+
 echo '
 <div id="editForm" class="modal-contenedor">
         <form class="modal-content" action="editCat.php" method="POST" enctype="multipart/form-data">
@@ -12,7 +13,7 @@ try{
 
     $stm= $conn->prepare("SELECT * FROM categorias WHERE id = $idCat");
     $stm->execute();
-    while($row = $stm->fetch(PDO::FETCH_OBJ)){
+    if($row = $stm->fetch(PDO::FETCH_OBJ)){
         echo'
         
             <input type="hidden" name="idEdit" id="idEdit" value="'. $row->id .'">
@@ -38,11 +39,11 @@ try{
                             }
                             echo'>' . $row2->categoria . '</option>';
                         }
-            echo'      </select>
+        echo'   </select>
                         </div>
                         <div class="mb-3">
                             <label for="imgEdit"><b>Imagen</b></label>
-                            <img src="../'.$row->img.'" id="imgCatEdit" style="width:100px">
+                            <img src="../'.$row->img.'" id="imgCatEdit" style="width:200px">
                             <input type="hidden" name="imgNoChange" id="imgNoChange" value="'. $row->img .'">
                             <input type="file" name="img" id ="imgCatEditSRC" style="min-width: 100%;">
                         </div>
@@ -52,8 +53,7 @@ try{
                             style="min-width: 100%;resize: none;">'.$row->descripcion.'</textarea>
                         </div>
                         <div class="clearfix">
-                            <button type="button" class="cancelbtn"
-                                onclick="document.getElementById(\'id03\').style.display=\'none\'">Cancelar</button>
+                            <button class="cancelbtn" href="categorias.php">Cancelar</button>
                             <button type="submit" class="signupbtn">Actualizar Categoria</button>
                         </div>
                     </div>
@@ -65,4 +65,3 @@ try{
 }
 include("footer.php");
 ?>
-

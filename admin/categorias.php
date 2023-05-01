@@ -9,9 +9,9 @@ $stmt->execute();
 echo '
 <main>
     <div class ="contenedor">
-    <h1>ADMINISRADOR DE CATEGORIAS DE PRODUCTOS</h1>
+    <h1>ADMINISRADOR DE CATEGORIAS DE CATEGORIAS</h1>
     <!-- Button to open the modal -->
-    <button onclick="document.getElementById(\'id01\').style.display=\'block\'">Registrar Producto</button>
+    <button onclick="document.getElementById(\'id01\').style.display=\'block\'">Registrar Categoria</button>
     </div>
 
     <hr>
@@ -42,7 +42,7 @@ echo '
 
 
                 <label class="form-label" for="img"><b>Imagen</b></label>
-                <input class="form-control" type="file" name="img" required>
+                <input class="form-control" type="file" name="img" >
 
                 <div class="clearfix">
                     <button type="button" class="cancelbtn"
@@ -141,13 +141,13 @@ echo '</tbody>
               
                 <select name="catPadreEdit" id="catPadreEdit" required>
                     <option value= 0 >Ninguna</option>
-                    <?php
+                    
                     // $stmt = $conn->prepare("SELECT  * FROM categorias");
                     // $stmt->execute();
                     // while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
                     //     echo '<option value= ' . $row->id . ' >' . $row->categoria . '</option>';
                     // }
-                    ?>
+                  
                 </select>
             </div>
             <div class="mb-3">

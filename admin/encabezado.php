@@ -40,7 +40,7 @@ echo '<!DOCTYPE html>
           <a href="dock.php" class="active">Home</a>
           <a href="user.php">Usuarios</a>
           <a href="categorias.php">Categorias</a>
-          <a href="productos.php">productos</a>
+          <a href="productos.php">Productos</a>
           <a href="ventas.php">Ventas</a>
           <!--Esta es el boton hamburgesa-->
           <a href="javascript:void(0);" class="icon" onclick="myFunction()">

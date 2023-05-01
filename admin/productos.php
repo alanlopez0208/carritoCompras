@@ -1,81 +1,119 @@
 <?php
 include("../conexion.php");
 include("encabezado.php");
+header('Cache-Control: max-age=360'); 
+
+$stmt = $conn->prepare("SELECT * FROM productos");
+$stmt->setFetchMode(PDO::FETCH_OBJ);
+$stmt->execute();
+
+echo '
+<main>
+    <div class ="contenedor">
+    <h1>ADMINISRADOR DE CATEGORIAS DE PRODUCTOS</h1>
+    <!-- Button to open the modal -->
+    <button onclick="document.getElementById(\'altaProd\').style.display=\'block\'">Registrar Producto</button>
+    </div>
+
+    <hr>
+    <!-- The Modal (contains the Sign Up form) -->
+    <div id="altaProd" class="modal">
+        <span onclick="document.getElementById(\'altaProd\').style.display=\'none\'" class="close" title="Close Modal"><i
+                class="fa-solid fa-xmark"></i></span>
+        <form class="modal-content" action="altaProd.php" method="POST" enctype="multipart/form-data">
+            <div class="container">
+                <h1>Crear Producto Nuevo</h1>
+                <hr>
+
+                <label for="producto"><b>Producto</b></label>
+                <input type="text" placeholder="Escirbe el nombre del Producto" name="producto" required>
+
+                <label for="cantidad"><b>Cantidad</b></label>
+                <input type="number" placeholder="Ingresa la cantidad" name="cantidad" required min="0" pattern="[0-9]*">
+
+                <label for="precio"><b>Preico</b></label>
+                <input type="number" placeholder="Ingresa el Precio" name="precio" required min="0" pattern="[0-9]*">
+
+                <label for="descripcion"><b>Descripcion</b></label>
+                <textarea name="descripcion" id="descripcion" placeholder="Escriba la descripcion"
+                    style=" min-width: 100%;   resize: none;"></textarea>
+
+
+                <label for="fecha_registro">Fecha de registro:</label>
+                <input type="date" id="fecha_registro" name="fecha_registro">
+                    
+
+                <div class="clearfix">
+                    <button type="button" class="cancelbtn"
+                    onclick="document.getElementById(\'altaProd\').style.display=\'none\'"
+                    >Cancel</button>
+                    <button type="submit" class="signupbtn">Registrar Producto</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    
+    <table class="table">
+        <thead class="thead-dark">
+            <tr class="bg-primary">
+                <th scope="col">PRODUCTO</th>
+                <th scope="col">CANTIDAD</th>
+                <th scope="col">PRECIO</th>
+                <th scope="col">DESCRIPCION</th>
+                <th scope="col">FECHA REGISTRO</th>
+                <th scope="col">MODIFICAR</th>
+                <th scope="col">ELIMINAR</th>
+            </tr>
+        </thead>
+        <tbody>
+    ';
+
+while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+    echo '<tr>
+        <td scope="row">' . $row->producto . '</td>
+        <td scope="row">' . $row->catId . '</td>
+        <td scope="row">' . $row->precio . '</td>
+        <td scope="row">' . $row->descripcion . '</td>
+        <td scope="row">' . $row->fechaReg . '</td>
+        
+        <td><a href="editProdForm.php?id='.$row->id.'"><i class="fa-solid fa-pen-to-square"  style="font-size: 40px"
+        onclick=""></i></a></td>
+        <td><i class="fa-solid fa-delete-left" style="font-size: 40px"
+        onclick="document.getElementById(\'eliminarProd\').style.display=\'block\';
+        idProducto(this,\'' . strval($row->producto) . '\',\'' . $row->id . '\')" ></i></td>
+    </tr>';
+}
+
+
+echo '</tbody>
+    </table>
+';
 ?>
 
-<!-- Button to open the modal -->
-<button onclick="document.getElementById('id01').style.display='block'">Sign Up</button>
 
-<!-- Inicio Alta Productos-->
-<form action="altaProductos.php" style="border:1px solid #ccc">
-    <div class="container">
-        <h1>Añadir Productos Nuevos</h1>
-        <hr>
-
-        <label for="categoria"><b>Categoria</b></label>
-        <input type="text" placeholder="Escirbe el nombre de la categoria" name="categoria" required>
-
-        <label for="categoriaSup"><b>Categoria Superior</b></label>
-        <select name="categoriaSup" id="" style=" min-width: 100%">
-            <option value="0">Ninguna</option>
-            <option value="1">Salas</option>
-            <option value="2">Muebles</option>
-            <option value="2">Recamaras</option>
-        </select>
-        <label for="descripcion"><b>Descripcion</b></label>
-        <textarea name="descripcion" id="descripcion" placeholder="Escriba la descripcion"
-            style=" min-width: 100%;   resize: none;"></textarea>
-
-        <label for="imgen"><b>Imagen</b></label>
-        <input type="file" name="imagen" required style="min-width: 100%;">
-
-
-        <div class="clearfix">
-            <button type="button" class="cancelbtn">Cancel</button>
-            <button type="submit" class="signupbtn">Registrar Producto</button>
+<!-- Form Eliminar Categoria 1-->
+<div id="eliminarProd" class="modal">
+    <span onclick="document.getElementById('eliminarProd').style.display='none'" class="close" title="Close Modal"><i
+            class="fa-solid fa-xmark"></i></span>
+    <form class="modal-content" action="eliminarProd.php" method="POST">
+        <input type="hidden" name="idDel" id="iddelProd">
+        <div class="container">
+            <h1>Eliminando el Producto"<span class="delProd"></span>"</h1>
+            <hr>
+            <p style="font-weight: bold;">¿Estas seguro que deseas eliminar la categoria </b><span
+                    class="delProd"></span>?
+            </p>
+            <div class="clearfix">
+                <button type="button" class="cancelbtn"
+                    onclick="document.getElementById('eliminarProd').style.display='none'">Cancelar</button>
+                <button type="submit" class="signupbtn">Eliminar Producto</button>
+            </div>
         </div>
-    </div>
-</form>
-<br>
-<!-- Fin Alta Productos  -->
-<h1>ADMINISRADOR DE PRODUCTOS</h1>
-<hr>
-<table class="table">
-    <thead class="thead-dark">
-        <tr class="bg-primary">
-            <th scope="col">PRODUCTO</th>
-            <th scope="col">IMAGEN</th>
-            <th scope="col">CANTIDAD</th>
-            <th scope="col">PRECIO</th>
-            <th scope="col">DESCRIPCION</th>
-            <th scope="col">FECHA REGISTRO</th>
-            <th scope="col">MODIFICAR</th>
-            <th scope="col">ELIMINAR</th>
-        </tr>
-    </thead>
-    <tbody>
+    </form>
+</div>
 
-        <?php
-        $stmt = $conn->prepare("SELECT * FROM productos");
-        $stmt->setFetchMode(PDO::FETCH_OBJ);
-        $stmt->execute();
-
-        while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
-            echo '<tr>
-        <td scope="row">' . $row->producto . '</td>
-        <td><img src="../' . $row->img . '" alt="" srcset="" style="width: 50px" ></td>
-        <td>' . $row->catId . '</td>
-        <td>' . $row->precio . '</td>
-        <td>' . $row->descripcion . '</td>
-        <td>' . $row->fechaReg . '</td>
-        <td><i class="fa-solid fa-pen-to-square"  style="font-size: 40px"></i></td>
-        <td><i class="fa-solid fa-delete-left" style="font-size: 40px"></i></td>
-    </tr>';
-        }
-        $conn = null;
-        ?>
-    </tbody>
-</table>
 <?php
+$conn = null;
 include("footer.php");
 ?>

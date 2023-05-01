@@ -27,6 +27,16 @@ function idCategoria(clase, categoria, id) {
 }
 
 //Funcion para cuando se le de clic al formulario eliminar
+function idProducto(clase, categoria, id) {
+  var elemento = document.getElementsByClassName("delProd");
+  document.getElementById("iddelProd").value = id;
+
+  for (let index = 0; index < elemento.length; index++) {
+    elemento[index].innerText = categoria;
+  }
+}
+
+//Funcion para cuando se le de clic al formulario eliminar
 function editarCategoria(clase, categoria, categoriaPadre,img,descripcion,id) {
     document.getElementById("editCat").innerHTML = categoria;
     
