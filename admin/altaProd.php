@@ -7,6 +7,8 @@ $precio = $_POST["precio"];
 $descripcion = $_POST["descripcion"];
 $fechaReg = $_POST["fecha_registro"];
 
+
+
 $stm = $conn->prepare("INSERT INTO productos
     (`producto`,`cateId`, `precio`,`descripcion`,`fechaReg`)
 VALUES (?,?,?,?,?)");
