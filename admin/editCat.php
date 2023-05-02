@@ -30,5 +30,4 @@ try {
 }
 
 $conn = null;
-echo 'Hola Mundo';
 ?>
